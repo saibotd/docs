@@ -255,6 +255,7 @@
       * [Cart manipulation](guides/plugins/apps/app-scripts/cart-manipulation.md)
       * [Data loading](guides/plugins/apps/app-scripts/data-loading.md)
       * [Custom endpoints](guides/plugins/apps/app-scripts/custom-endpoints.md)
+    * [App Rule Conditions](guides/plugins/apps/app-rule-conditions/README.md)
     * [Hosting Guide](guides/plugins/apps/hosting-guide/README.md)
       * [Platform.sh Deployment](guides/plugins/apps/hosting-guide/platform-sh-deployment.md)
     * [Platform.sh template](guides/plugins/apps/platform-sh-template.md)
