@@ -116,7 +116,7 @@ Shopware.Component.register('sw-cms-el-preview-dailymotion', {
 
 Just like most components, it has a custom template and some styles. Focus on the template first, create a new file `sw-cms-el-preview-dailymotion.html.twig`.
 
-So, what do you want to show here? Maybe the default 'mountain' preview image, that's already being used for the image element. On top of that, you could place our icon `multicolor-action-play`. Head over to your [icon library](https://component-library.shopware.com/icons/) to find this icon.
+So, what do you want to show here? Maybe the default 'mountain' preview image, that's already being used for the image element. Let's just copy it from `<Shopware root>/public/bundles/administration/static/img/cms/preview_mountain_small.jpg` to our static folders as an example. Of course, don't hesitate to replace it with something of your own! On top of that, you could place our icon `multicolor-action-play`. Head over to your [icon library](https://component-library.shopware.com/icons/) to find this icon.
 
 That means: You'll need a container to contain both the image and the icon. In there, you create an `img` tag and use the [sw-icon component](https://github.com/shopware/platform/blob/v6.3.4.1/src/Administration/Resources/app/administration/src/app/component/base/sw-icon/index.js) to display the icon.
 
@@ -128,14 +128,15 @@ That means: You'll need a container to contain both the image and the icon. In t
         <img class="sw-cms-el-preview-dailymotion-img"
              :src="'customcmselement/static/img/background_dailymotion_preview.jpg' | asset">
 
-        <img class="sw-cms-el-preview-dailymotion-icon"
-             :src="'customcmselement/static/img/dailymotion.svg' | asset">
+        <sw-icon class="sw-cms-el-preview-dailymotion-icon"
+                 name="multicolor-action-play"></sw-icon>
     </div>
 {% endblock %}
 ```
 {% endraw %}
 {% endcode %}
 
+!!!<text about bundle root needed>!!!
 The icon would now be displayed beneath the image, so let's add some styles for this by creating the file `sw-cms-el-preview-dailymotion.scss`.
 
 The container needs to have a `position: relative;` style. This is necessary, so the child can be positioned absolutely and will do so relative to the container's position. Thus, the icon receives a `position: absolute; style`, plus some top and left values to center it.
@@ -310,8 +311,14 @@ Shopware.Component.register('sw-cms-el-config-dailymotion', {
     ],
 
     computed: {
-        dailyUrl() {
-            return this.element.config.dailyUrl;
+        dailyUrl: {
+            get() {
+                return this.element.config.dailyUrl.value;
+            },
+
+            set(value) {
+                this.element.config.dailyUrl.value = value;
+            }
         }
     },
 
@@ -339,12 +346,12 @@ Open the template `sw-cms-el-config-dailymotion.html.twig` instead. To be displa
 {% code title="<plugin root>/src/Resources/app/administration/src/module/sw-cms/elements/dailymotion/config/sw-cms-el-config-dailymotion.html.twig" %}
 {% raw %}
 ```markup
-    {% block sw_cms_element_dailymotion_config %}
+{% block sw_cms_element_dailymotion_config %}
     <sw-text-field
+          v-model="dailyUrl"
           class="swag-dailymotion-field"
           label="Dailymotion video link"
           placeholder="Enter dailymotion link..."
-          v-model="dailyUrl"
           @element-update="onElementUpdate">
     </sw-text-field>
 {% endblock %}
