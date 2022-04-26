@@ -66,6 +66,15 @@
       * [Decorating a Shopware Migration Assistant converter](products/plugins/migration-assistant/guides/decorating-a-shopware-migration-assistant-converter.md)
       * [Creating a new migration profile](products/plugins/migration-assistant/guides/creating-a-new-migration-profile.md)
 * [Cloud](products/cloud.md)
+* [PaaS](products/paas/README.md)
+  * [CLI Setup](products/paas/cli-setup.md)
+  * [Repository](products/paas/repository.md)
+  * [Build & Deploy](products/paas/build-deploy.md)
+  * [Setup Template](products/paas/setup-template.md)
+  * [Theme Build](products/paas/theme-build.md)
+  * [Elasticsearch](products/paas/elasticsearch.md)
+  * [RabbitMQ](products/paas/rabbitmq.md)
+  * [Fastly](products/paas/fastly.md)
 * [PWA](products/pwa.md)
 
 ## Guides
