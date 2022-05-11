@@ -72,6 +72,7 @@ User=www-data # Change this to webservers user name
 Restart=always
 RestartSec=always
 # Change the path to your shop path
+WorkingDirectory=/var/www/html
 ExecStart=php /var/www/html/bin/console messenger:consume --time-limit=60 --memory-limit=512M
 
 [Install]
